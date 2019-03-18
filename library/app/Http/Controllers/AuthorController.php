@@ -35,8 +35,10 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         Author::create($request->all());
+
+        return view('welcome');
     }
 
     /**

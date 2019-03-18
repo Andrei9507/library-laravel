@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        
 
         <title>Laravel</title>
 
@@ -13,14 +14,6 @@
         {{-- scripts --}}
         <script src="{{asset('libs/jquery-3.3.1/jquery-3.3.1.js')}}"></script>
         <script src="{{asset('js/app.js')}}"></script>
-
-        {{-- <script>
-            $.ajaxSetup({
-                headers: {'X-CSRF-Token': $('meta[name="_csrf"]').attr('content')}
-            });
-        </script> --}}
-        <!-- Styles -->
-       
     </head>
     <body>
         {{-- <div class="flex-center position-ref full-height">
@@ -51,14 +44,19 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+    
+    
                 </div> --}}
-
                 <form id="add_author">
                     <input name="name" type="text" placeholder="name author">
                     <button  onclick="addAuthor()"> Submit</button>
                 </form>
 
-                
+            </div>
+            <div class="items">
+
+            </div>
+            
             </div>
         </div>
     </body>
