@@ -8,21 +8,29 @@
 // });
 
 $( document ).ready(function() {
-	console.log( "ready!" );
+	
 	$.ajaxSetup({
 			headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    
             }
     });
-    console.log($('meta[name="csrf-token"]').attr('content'));
     
 });
 
 
 
-  
 function addAuthor()
+{
+    //remote request for template
+    $.get('authors/create',{},function(data){
+
+        $('#js_add_author').html(data);       
+
+    });
+}
+
+  
+function storeAuthor()
 {
         var data = $("#add_author").serializeArray();
         console.log(data);
@@ -33,7 +41,7 @@ function addAuthor()
             console.log(data);
             alert('success');
                 // $("#listing_personnel tbody").prepend(data);
-                $(".items").prepend(data);
+                $("#listing_author").prepend(data);
             });
 
 

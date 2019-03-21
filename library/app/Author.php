@@ -10,4 +10,14 @@ class Author extends Model
         'name', 
     ];
 
+
+    public function getAll()
+    {
+        return $this->get();
+    }
+    
+    public function getItem($id)
+    {
+        return $this->find($id);
+    }
 }

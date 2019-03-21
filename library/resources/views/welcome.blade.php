@@ -53,9 +53,6 @@
                 </form>
 
             </div>
-            <div class="items">
-
-            </div>
             
             </div>
         </div>
