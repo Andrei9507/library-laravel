@@ -20,4 +20,18 @@ class Author extends Model
     {
         return $this->find($id);
     }
+
+    /**
+     * save item
+     * @param array $params
+     * @return collection
+     */
+    public function saveItem($params)
+    {
+        $new = $this->create($params);
+        
+        return $new;
+
+    }
+    
 }

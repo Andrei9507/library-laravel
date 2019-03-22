@@ -40,7 +40,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        return viewview('author/create');
+        return view('author/create');
     }
 
     /**
@@ -52,9 +52,9 @@ class AuthorController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $author = Author::create($request->all());
+        $author = $this->author->saveItem($request->all());
 
-        return view('welcome')->withAuthor($author);
+        return view('author.listingItem')->withAuthor($author);
     }
 
     /**
@@ -76,7 +76,8 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        
+        return view('author/edit')->withAuthor($author);
     }
 
     /**

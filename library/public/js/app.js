@@ -33,43 +33,34 @@ function addAuthor()
 function storeAuthor()
 {
         var data = $("#add_author").serializeArray();
-        console.log(data);
-        alert('here i am');
+        // console.log(data);
+        // alert('here i am');
        
         $.post('authors', data, function (data) {
                 
-            console.log(data);
-            alert('success');
-                // $("#listing_personnel tbody").prepend(data);
-                $("#listing_author").prepend(data);
+                $("#listing_authors").prepend(data);
             });
 
-
-
         // $.ajax({
-            // headers: {
-            //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            // },
-            // headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
-            // type: 'POST',
-            // url: 'authors',
-            // enctype: 'multipart/form-data',
-            // data: data,
-            // processData: false,
-            // contentType: false,
-            // async: false,
-            // cache: false,
-            // success: function (data) {
-            //     console.log(data);
-            //     alert('here i am');
+        //     type: 'POST',
+        //     url: 'authors',
+        //     enctype: 'multipart/form-data',
+        //     data: data,
+        //     processData: false,
+        //     contentType: false,
+        //     async: false,
+        //     cache: false,
+        //     success: function (data) {
+        //         alert('succes');
+        //         $("#listing_author").prepend(data);
                     
-            //     },
-            // error: function (error) {
-            //     console.log(error);
-            //     alert('error');
+        //         },
+        //     error: function (error) {
+        //         console.log(error);
+        //         alert('error');
                     
-            //     }
-            // });
+        //         }
+        //     });
 }
 // function addAuthor()
 // {
@@ -101,3 +92,13 @@ function storeAuthor()
 //                 }
 //             });
 // }
+function editAuthor(id)
+{
+
+    //remote request for template
+    $.get('authors/'+id+'/edit',{},function(data){
+
+        $('#listing_author_'+id).replaceWith(data);
+       
+    });
+}

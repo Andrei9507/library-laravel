@@ -9,16 +9,18 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('libs/Semantic-UI-2.4/semantic.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{asset('libs/jquery-3.3.1/jquery-3.3.1.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('libs/Semantic-UI-2.4/semantic.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
    
