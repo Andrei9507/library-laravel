@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('authors', 'AuthorController');
+Route::resource('books', 'BookController');
+Route::resource('customers', 'CustomerController');

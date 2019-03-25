@@ -103,7 +103,110 @@ function editAuthor(id)
     });
 }
 
+function updateAuthor(id)
+{
+    // if (checkCompanyFields() === true)
+    // {
 
+        // var id = $("#edit_company_id").val();
+
+        // toastr.info(translate('please_wait'));
+        var data = $("#edit_author_"+id).serializeArray();
+        //remote request for template
+        //the id is generic x as the real id of the company is saved in session
+        $.ajax({
+            url: '/authors/' + id,
+            type: 'PUT',
+            data: data,
+            success: function (result) {
+                // toastr.clear();
+                $("#edit_author_"+id).replaceWith(result);
+            }
+
+        });
+
+
+    // } else {
+    //     return false;
+    // }
+
+}
+
+
+
+/// -------------Author path end ------------
+
+
+
+
+
+/// -------------Customer path start -----------
+
+
+function addCustomer()
+{
+    //remote request for template
+    $.get('customers/create',{},function(data){
+
+        $('#js_add_customer').html(data);       
+
+    });
+}
+
+
+function storeCustomer()
+{
+    var data = $("#add_customer").serializeArray();
+    // console.log(data);
+    // alert('here i am');
+    
+    $.post('customers', data, function (data) {
+            
+        $("#listing_customers").prepend(data);
+    });
+    
+}
+
+function editCustomer(id)
+{
+
+    //remote request for template
+    $.get('customers/'+id+'/edit',{},function(data){
+
+        $('#listing_customer_'+id).replaceWith(data);
+       
+    });
+}
+
+
+function updateCustomer(id)
+{
+    // if (checkCompanyFields() === true)
+    // {
+
+        // var id = $("#edit_company_id").val();
+
+        // toastr.info(translate('please_wait'));
+        var data = $("#edit_customer_"+id).serializeArray();
+        //remote request for template
+        //the id is generic x as the real id of the company is saved in session
+        $.ajax({
+            url: '/customers/' + id,
+            type: 'PUT',
+            data: data,
+            success: function (result) {
+                // toastr.clear();
+                $("#edit_customer_"+id).replaceWith(result);
+            }
+
+        });
+
+
+    // } else {
+    //     return false;
+    // }
+
+}
 /* method exemple
 
 

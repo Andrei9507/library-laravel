@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    protected $customer;
+
+
+    public function __construct(
+        Customer $customer
+    )
+    {
+
+        $this->customer = $customer;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = $this->customer->getAll();
+        // dd($authors);
+        return view('customer/listing')
+                ->with(compact('customers'));
     }
 
     /**
@@ -24,7 +38,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customer/create');
     }
 
     /**
@@ -35,7 +49,9 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = $this->customer->saveItem($request->all());
+
+        return view('customer.listingItem')->withCustomer($customer);
     }
 
     /**
@@ -57,7 +73,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customer/edit')->withCustomer($customer);
     }
 
     /**
@@ -69,7 +85,11 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $customer = $this->customer->find($customer->id);
+
+        $customer->update($request->all());
+        
+        return view('customer.listingItem')->withCustomer($customer);
     }
 
     /**

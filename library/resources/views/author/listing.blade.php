@@ -2,10 +2,10 @@
 
 @section('content')
 
-{{-- <form id="add_author">
+<!-- <form id="add_author">
     <input name="name" type="text" placeholder="name author">
     <button  onclick="storeAuthor()"> Submit</button>
-</form> --}}
+</form>  -->
 
 <div class="ui container">
 

@@ -9,7 +9,7 @@
     </div>
 
     <div class="four wide column">
-        <button class="ui green button" onclick="updateAuthor({{$author->id}})">
+        <button class="ui green button"  type= "button" onclick="updateAuthor({{$author->id}})">
             update
         </button>
     </div>

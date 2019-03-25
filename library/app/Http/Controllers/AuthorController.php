@@ -89,7 +89,11 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $author = $this->author->find($author->id);
+
+        $author->update($request->all());
+        
+        return view('author.listingItem')->withAuthor($author);
     }
 
     /**
