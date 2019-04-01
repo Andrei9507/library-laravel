@@ -34,30 +34,5 @@ class Author extends Model
 
     }
     
-    // public function updateAuthor($id)
-    // {
-    //     $author = $this->find($id);
-    //     $fields = Request::input();
-    //     $fields['updated_by'] = Auth::user()->employee->id;
-    //     $fields['register_number'] = strtolower(trim(str_replace(' ', '', $fields['cui'])));
-    //     $company->update($fields);
-
-
-    //     foreach(Request::input('contact') as $contact)
-    //     {
-    //         //if there is a new contact completed, with name
-    //         if(!empty($contact['id']))
-    //             Contact::find($contact['id'])->update($contact);
-    //         elseif( !empty($contact['name']))
-    //             Contact::create($contact);
-    //     }
-        
-        
-    //     CompanyContractors::updateCompanyItems($id);
-    //     CompanyActivities::updateCompanyItems($id);
-    //     CompanyDivision::updateCompanyDivisions($id, request()->all());
-        
-        
-    //     return $company;
-    // }
+    
 }

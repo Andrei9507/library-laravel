@@ -3,10 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Author;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    protected $book;
+    protected $author;
+
+
+    public function __construct(
+        Book $book,
+        Author $author
+    )
+    {
+
+        $this->book = $book;
+        $this->author = $author;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +28,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = $this->book->getAll();
+        // dd($books);
+        return view('book/listing')
+                ->with(compact('books'));
     }
 
     /**
@@ -24,7 +41,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('book/create');
     }
 
     /**
@@ -35,7 +52,9 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = $this->book->saveItem($request->all());
+
+        return view('book.listingItem')->withBook($book);
     }
 
     /**
@@ -57,7 +76,11 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $authors= $this->author->getAll();
+        // dd($authors);
+        return view('book/edit')
+                ->with(compact('book'))
+                ->with(compact('authors'));
     }
 
     /**
@@ -69,7 +92,11 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book = $this->book->find($book->id);
+
+        $book->update($request->all());
+        
+        return view('book.listingItem')->withBook($book);
     }
 
     /**

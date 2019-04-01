@@ -188,3 +188,63 @@ function updateCustomer(id)
         });
 
 }
+
+/// -------------Customer path end -----------
+
+
+/// -------------Book path start -----------
+
+
+function addBook()
+{
+    //remote request for template
+    $.get('books/create',{},function(data){
+
+        $('#js_add_book').html(data);       
+
+    });
+}
+
+
+function storeBook()
+{
+    var data = $("#add_book").serializeArray();
+    // console.log(data);
+    // alert('here i am');
+    
+    $.post('books', data, function (data) {
+            
+            $("#listing_books").prepend(data);
+        });
+
+}
+
+function editBook(id)
+{
+
+    //remote request for template
+    $.get('books/'+id+'/edit',{},function(data){
+
+        $('#listing_book_'+id).replaceWith(data);
+       
+    });
+}
+
+
+function updateBook(id)
+{
+   
+        var data = $("#edit_book_"+id).serializeArray();
+     
+        $.ajax({
+            url: '/books/' + id,
+            type: 'PUT',
+            data: data,
+            success: function (result) {
+                // toastr.clear();
+                $("#edit_book_"+id).replaceWith(result);
+            }
+
+        });
+
+}
