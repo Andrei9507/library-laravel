@@ -2,9 +2,9 @@
     <input name="name" type="text" value="{{$author->name}}">
     <button  onclick="updateAuthor({{$author->id}})" type= "button"> Submit</button>
 </form> --}}
-<form class="ui form row" id="edit_book_{{$book->id}}"> 
+<form class="ui form row " id="edit_book_{{$book->id}}">
 
-    <div  class="four wide column ">
+    <div  class="four wide column  ">
             <input name="name" type="text" value="{{$book->name}}">
     </div>
 
@@ -15,11 +15,11 @@
             @endforeach
         </select>
     </div>
-    
+
     <div  class="four wide column ">
             <input name="type" type="text" value="{{$book->type}}">
     </div>
-   
+
 
     <div class="four wide column">
         <button class="ui green button"  type= "button" onclick="updateBook({{$book->id}})">

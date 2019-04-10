@@ -29,6 +29,7 @@ class BookController extends Controller
     public function index()
     {
         $books = $this->book->getAll();
+
         // dd($books);
         return view('book/listing')
                 ->with(compact('books'));
@@ -41,7 +42,10 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('book/create');
+        $authors = $this->author->getAll();
+
+        return view('book/create')
+            ->with(compact('authors'));
     }
 
     /**
@@ -95,7 +99,7 @@ class BookController extends Controller
         $book = $this->book->find($book->id);
 
         $book->update($request->all());
-        
+
         return view('book.listingItem')->withBook($book);
     }
 

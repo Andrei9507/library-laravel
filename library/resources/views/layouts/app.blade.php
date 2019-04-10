@@ -76,9 +76,11 @@
         </nav> --}}
 
         @include('partials.navbar')
-        <main class="py-4">
+        <div class="ui container top-padded">
+
             @yield('content')
-        </main>
+
+        </div>
     
 </body>
 </html>

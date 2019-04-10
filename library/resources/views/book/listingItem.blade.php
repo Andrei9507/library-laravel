@@ -1,5 +1,5 @@
-<div class="row" id="listing_book_{{$book->id}}">
-    <div  class="four wide column ">
+<div class="row odd-listing divide-padding middle aligned" id="listing_book_{{$book->id}}">
+    <div  class="four wide column  ">
         {{$book->name}}
     </div>
 
@@ -11,7 +11,7 @@
         {{$book->type}}
     </div>
 
-    <div class="four wide column">
+    <div class="four wide column center aligned">
         <button class="ui primary button" onclick="editBook({{$book->id}})">
             Edit
         </button>
