@@ -10,7 +10,7 @@
 <!-- <div class="ui container"> -->
 
     <div class="row dowwn-side ">
-        <button class="ui orange button" onclick="addAuthor();">Add Author</button>
+        <button id="js-disable-add-author" class="ui orange button" onclick="addAuthor();">Add Author</button>
     </div>
 
     <div id="js_add_author">

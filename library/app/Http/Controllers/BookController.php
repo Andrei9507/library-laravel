@@ -69,7 +69,9 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        $book = $this->book->find($book->id);
+
+        return view('book.listingItem')->withBook($book); 
     }
 
     /**

@@ -74,7 +74,7 @@
                 </div>
             </div>
         </nav> --}}
-
+       
         @include('partials.navbar')
         <div class="ui container top-padded">
 

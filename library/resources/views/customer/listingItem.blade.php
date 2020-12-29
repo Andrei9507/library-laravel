@@ -1,4 +1,4 @@
-    <div class="row" id="listing_customer_{{$customer->id}}">
+    <div class="row odd-listing divide-padding middle aligned" id="listing_customer_{{$customer->id}}">
         <div  class="four wide column ">
             {{$customer->first_name}}
         </div>

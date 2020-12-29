@@ -9,19 +9,17 @@
 
 
     <div class="row dowwn-side ">
-        <!-- <div class=""> -->
-            <button class="ui orange button" onclick="addBook();">Add Book</button>
-        <!-- </div> -->
+        <button id="js-disable-add-book" class="ui orange button" onclick="addBook();">Add Book</button>
     </div>
 
     <div id="js_add_book">
 
     </div>
 
-<div class="ui  grid">
-    <div class="row center aligned ">
-        <div  class="four wide column  ">
-                Name
+    <div class="ui  grid">
+        <div class="row center aligned ">
+            <div  class="four wide column  ">
+                    Name
             </div>
 
             <div  class="four wide column ">
@@ -35,15 +33,15 @@
             <div class="four wide column ">
                 Action
             </div>
+        </div>
+        <div id="listing_books" class="row ui padded center aligned grid " >
+
+            @foreach($books as $book)
+
+                @include('book.listingItem')
+
+            @endforeach
+        </div>
     </div>
-    <div id="listing_books" class=" ui padded center aligned grid " >
-
-        @foreach($books as $book)
-
-            @include('book.listingItem')
-
-        @endforeach
-    </div>
-</div>
 
 @endsection

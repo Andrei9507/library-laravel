@@ -23,7 +23,7 @@ function addAuthor()
 {
     //remote request for template
     $.get('authors/create',{},function(data){
-
+        $("#js-disable-add-author").attr('disabled', true);
         $('#js_add_author').html(data);
 
     });
@@ -37,9 +37,10 @@ function storeAuthor()
         // alert('here i am');
 
         $.post('authors', data, function (data) {
-
-                $("#listing_authors").prepend(data);
-            });
+            $("#js-disable-add-author").attr('disabled', false);
+            $("#add_author").remove();
+            $("#listing_authors").prepend(data);
+        });
 
         // $.ajax({
         //     type: 'POST',
@@ -92,6 +93,12 @@ function storeAuthor()
 //                 }
 //             });
 // }
+function closeAddAuthor() {
+    
+    $("#js-disable-add-author").attr('disabled', false);
+    $('#add_author').remove();
+}
+
 function editAuthor(id)
 {
 
@@ -106,22 +113,29 @@ function editAuthor(id)
 function updateAuthor(id)
 {
 
-        var data = $("#edit_author_"+id).serializeArray();
+    var data = $("#edit_author_"+id).serializeArray();
 
-        $.ajax({
-            url: '/authors/' + id,
-            type: 'PUT',
-            data: data,
-            success: function (result) {
-                // toastr.clear();
-                $("#edit_author_"+id).replaceWith(result);
-            }
+    $.ajax({
+        url: '/authors/' + id,
+        type: 'PUT',
+        data: data,
+        success: function (result) {
+            $("#edit_author_"+id).replaceWith(result);
+        }
 
-        });
+    });
 
+}
 
+function cancelEditAuthor(id) {
 
-
+    $.ajax({
+        url: '/authors/' + id,
+        type: 'GET',
+        success: function (result) {
+            $("#edit_author_"+id).replaceWith(result);
+        }
+    });
 }
 
 
@@ -139,9 +153,8 @@ function addCustomer()
 {
     //remote request for template
     $.get('customers/create',{},function(data){
-
-        $('#js_add_customer').html(data);
-
+        $("#js-disable-add-customer").attr('disabled', true);
+        $('#listing_customers').prepend(data);
     });
 }
 
@@ -149,14 +162,21 @@ function addCustomer()
 function storeCustomer()
 {
     var data = $("#add_customer").serializeArray();
-    // console.log(data);
-    // alert('here i am');
 
     $.post('customers', data, function (data) {
 
-        $("#listing_customers").prepend(data);
+        $("#js-disable-add-customer").attr('disabled', false);
+        $("#add_customer").remove();
+        $("#listing_customers").append(data);
     });
 
+}
+
+
+function storeCustomerClose()
+{
+    $('#add_customer').remove();
+    $("#js-disable-add-customer").attr('disabled', false);
 }
 
 function editCustomer(id)
@@ -199,7 +219,7 @@ function addBook()
 {
     //remote request for template
     $.get('books/create',{},function(data){
-
+        $("#js-disable-add-book").attr('disabled', true);
         $('#listing_books').prepend(data);
 
     });
@@ -215,6 +235,7 @@ function storeBook()
     $.post('books', data, function (data) {
 
         $("#add_book").remove();
+        $("#js-disable-add-book").attr('disabled', false);
         $("#listing_books").prepend(data);
 
         });
@@ -224,6 +245,7 @@ function storeBook()
 function storeBookClose()
 {
     $('#add_book').remove();
+    $("#js-disable-add-book").attr('disabled', false);
 }
 
 function editBook(id)
@@ -242,7 +264,6 @@ function updateBook(id)
 {
 
         var data = $("#edit_book_"+id).serializeArray();
-
         $.ajax({
             url: '/books/' + id,
             type: 'PUT',
@@ -254,4 +275,15 @@ function updateBook(id)
 
         });
 
+}
+
+function cancelEditBook(id) {
+
+    $.ajax({
+        url: '/books/' + id,
+        type: 'GET',
+        success: function (result) {
+            $("#edit_book_"+id).replaceWith(result);
+        }
+    });
 }

@@ -65,7 +65,9 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        $author = $this->author->find($author->id);
+
+        return view('author.listingItem')->withAuthor($author); 
     }
 
     /**
@@ -76,7 +78,6 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        
         return view('author/edit')->withAuthor($author);
     }
 

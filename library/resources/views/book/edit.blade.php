@@ -25,6 +25,10 @@
         <button class="ui green button"  type= "button" onclick="updateBook({{$book->id}})">
             update
         </button>
+        
+        <button class="ui red button" type="button" onclick="cancelEditBook({{$book->id}})">
+            cancel
+        </button>
     </div>
 
 </form>
